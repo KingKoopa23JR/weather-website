@@ -1,3 +1,4 @@
+
 const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
 const msg1 = document.querySelector("#msg1");
@@ -17,7 +18,12 @@ weatherForm.addEventListener('submit', (e) =>{
     }
     else {
       msg1.textContent = data.location;
-      msg2.textContent = data.forecast;
+      msg2.textContent = data.currentTime + ", "+
+      data.currentTemp + " degrees, " +
+      data.status + ", " +
+      data.realFeel + " degrees real feel, " +
+      data.precipPercent;
+      
     }
   })
 })

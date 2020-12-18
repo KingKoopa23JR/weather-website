@@ -14,7 +14,14 @@ function forecast(latitude, longitude, callback){
       const realFeel = response.body.current.feelslike;
       const precipPercent = response.body.current.precip * 100;
       const weatherDescription = response.body.current.weather_descriptions[0];
-      callback(undefined, `${weatherDescription}. It is currently ${currentTemp} degrees with a real feel of ${realFeel} and ${precipPercent}% chance of percipitation today`);
+      const currentTime = response.body.location.localtime;
+      callback(undefined, {
+        currentTime: currentTime,
+        currentTemp: currentTemp,
+        status: weatherDescription,
+        realFeel: realFeel,
+        precipPercent: precipPercent
+      });
       }
   });
   
